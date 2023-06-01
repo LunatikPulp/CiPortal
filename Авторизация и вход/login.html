@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="style3.css" />
+  </head>
+  <body>
+    <form class="box" action="#" method="post" onsubmit="return validateForm()">
+      <h1>Регистрация</h1>
+      <div>
+        <input type="text" id="lastName" placeholder="Фамилия" required  />
+        <div class="error-message"></div>
+      </div>
+      <div>
+        <input type="text" id="firstName" placeholder="Имя" required  />
+        <div class="error-message"></div>
+      </div>
+      <div>
+        <input type="text" id="middleName" placeholder="Отчество" required />
+        <div class="error-message"></div>
+      </div>
+      <div>
+        <input type="text" id="username" placeholder="Логин" required  />
+        <div class="error-message"></div>
+      </div>
+      <div>
+        <input type="email" id="email" placeholder="E-mail" required />
+        <div class="error-message"></div>
+      </div>
+      <div>
+        <input type="password" id="password" placeholder="Пароль" required />
+        <div class="error-message"></div>
+      </div>
+      <div>
+        <input
+          type="password"
+          id="confirmPassword"
+          placeholder="Повтор пароля" required 
+        />
+        <div class="error-message"></div>
+      </div>
+      <div>
+        <input type="checkbox" id="terms" required />
+        <label for="click" class="text_1">
+          Согласие на обработку персональных данных</label
+        >
+        <div class="error-message"></div>
+      </div>
+      <input type="submit" name="" value="Зарегистрироваться" />
+    </form>
+    <script>
+      function validateForm() {
+        // Получение элементов формы
+        const lastNameInput = document.getElementById("lastName");
+        const firstNameInput = document.getElementById("firstName");
+        const middleNameInput = document.getElementById("middleName");
+        const usernameInput = document.getElementById("username");
+        const emailInput = document.getElementById("email");
+        const passwordInput = document.getElementById("password");
+        const confirmPasswordInput = document.getElementById("confirmPassword");
+        const termsInput = document.getElementById("terms");
+
+        // Получение элементов для отображения сообщений об ошибках
+        const lastNameError = lastNameInput.nextElementSibling;
+        const firstNameError = firstNameInput.nextElementSibling;
+        const middleNameError = middleNameInput.nextElementSibling;
+        const usernameError = usernameInput.nextElementSibling;
+        const emailError = emailInput.nextElementSibling;
+        const passwordError = passwordInput.nextElementSibling;
+        const confirmPasswordError = confirmPasswordInput.nextElementSibling;
+        const termsError = termsInput.nextElementSibling;
+
+        // Получение значений полей формы
+        const lastName = lastNameInput.value.trim();
+        const firstName = firstNameInput.value.trim();
+        const middleName = middleNameInput.value.trim();
+        const username = usernameInput.value.trim();
+        const email = emailInput.value.trim();
+        const password = passwordInput.value.trim();
+        const confirmPassword = confirmPasswordInput.value.trim();
+        const terms = termsInput.checked;
+
+        // Создание массива для хранения ошибок
+        const errors = [];
+
+        // Проверка обязательных полей на заполнение
+        if (lastName === "") {
+          errors.push("Фамилия является обязательным полем");
+        }
+        if (firstName === "") {
+          errors.push("Имя является обязательным полем");
+        }
+        if (middleName === "") {
+          errors.push("Отчество является обязательным полем");
+        }
+        if (email === "") {
+          errors.push("Email является обязательным полем");
+        }
+        if (password === "") {
+          errors.push("Пароль является обязательным полем");
+        }
+        // Проверка ФИО на кириллицу, дефис и пробелы
+        const lastNamePattern = /^[а-яА-ЯёЁ\s-]+$/;
+        if (!lastNamePattern.test(lastName)) {
+          errors.push(
+            "Фамилия должна содержать только кириллические буквы, дефис и пробелы"
+          );
+        }
+        
+
+        const firstNamePattern = /^[а-яА-ЯёЁ\s-]+$/;
+        if (!firstNamePattern.test(firstName)) {
+          errors.push(
+            "Имя должно содержать только кириллические буквы, дефис и пробелы"
+          );
+        }
+
+        const middleNamePattern = /^[а-яА-ЯёЁ\s-]+$/;
+        if (!middleNamePattern.test(middleName)) {
+          errors.push(
+            "Отчество должно содержать только кириллические буквы, дефис и пробелы"
+          );
+        }
+        // Проверка логина на латиницу
+        const usernamePattern = /^[a-zA-Z0-9_-]{3,16}$/;
+        if (!usernamePattern.test(username)) {
+          errors.push(
+            "Логин должен содержать только латинские буквы, цифры, дефис и нижнее подчеркивание. Длина должна быть от 3 до 16 символов"
+          );
+        }
+
+        // Проверка email на валидный формат
+        const emailPattern = /^[^@\s]+@[^@\s]+.[^@\s]+$/;
+        if (!emailPattern.test(email)) {
+          errors.push("Некорректный формат email-адреса");
+        }
+
+        // Проверка пароля
+        if (password.length < 8) {
+          errors.push("Длина пароля должна быть не менее 8 символов");
+        }
+
+        // Проверка повторного ввода пароля
+        if (password !== confirmPassword) {
+          errors.push("Пароли не совпадают");
+        }
+
+        // Проверка согласия на обработку данных
+        if (!terms) {
+          errors.push("Необходимо дать согласие на обработку данных");
+        }
+
+
+        // Отображение ошибок
+        if (errors.length > 0) {
+          // Объединение сообщений об ошибках в одну строку
+
+          // Проверка повторного ввода пароля
+          if (password !== confirmPassword) {
+            errors.push("Пароли не совпадают");
+            confirmPasswordInput.focus();
+          }
+
+          // Очистка сообщений об ошибках, если они были
+          lastNameError.innerHTML = "";
+          firstNameError.innerHTML = "";
+          middleNameError.innerHTML = "";
+          usernameError.innerHTML = "";
+          emailError.innerHTML = "";
+          passwordError.innerHTML = "";
+          confirmPasswordError.innerHTML = "";
+          termsError.innerHTML = "";
+
+          // Отображение ошибок
+          if (errors.length > 0) {
+            for (let i = 0; i < errors.length; i++) {
+              let error = errors[i];
+              switch (error) {
+                case "Фамилия является обязательным полем":
+                  lastNameError.innerHTML = error;
+                  break;
+                case "Имя является обязательным полем":
+                  firstNameError.innerHTML = error;
+                  break;
+                case "Отчество является обязательным полем":
+                  middleNameError.innerHTML = error;
+                  break;
+                case "Email является обязательным полем":
+                  emailError.innerHTML = error;
+                  break;
+                case "Пароль является обязательным полем":
+                  passwordError.innerHTML = error;
+                  break;
+                case "Фамилия должна содержать только кириллические буквы, дефис и пробелы":
+                  lastNameError.innerHTML = error;
+                  break;
+                case "Имя должно содержать только кириллические буквы, дефис и пробелы":
+                  firstNameError.innerHTML = error;
+                  break;
+                case "Отчество должно содержать только кириллические буквы, дефис и пробелы":
+                  middleNameError.innerHTML = error;
+                  break;
+                case "Логин должен содержать только латинские буквы, цифры, дефис и нижнее подчеркивание. Длина должна быть от 3 до 16 символов":
+                  usernameError.innerHTML = error;
+                  break;
+                case "Некорректный формат email-адреса":
+                  emailError.innerHTML = error;
+                  break;
+                case "Длина пароля должна быть не менее 8 символов":
+                  passwordError.innerHTML = error;
+                  break;
+                case "Пароли не совпадают":
+                  confirmPasswordError.innerHTML = error;
+                  break;
+                case "Необходимо дать согласие на обработку данных":
+                  termsError.innerHTML = error;
+                  break;
+              }
+            }
+            // Отмена отправки формы
+            return false;
+          }
+
+          // Успешная валидация формы
+          return true;
+        }
+      }
+    </script>
+  </body>
+</html>

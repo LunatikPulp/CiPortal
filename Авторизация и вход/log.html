@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход</title>
+    <link rel="stylesheet" href="style2.css">
+    <script src="script2.js" defer></script>
+</head>
+<body>
+    <form class="box" action="#" method="post">
+        <h1>Вход</h1>
+        <input type="text" name="username" placeholder="Логин">
+        <div id="error-msg-username" class="error-msg"></div>
+        <input type="password" name="password" placeholder="Пароль">
+        <div id="error-msg-password" class="error-msg"></div>
+        <input type="submit" value="Вход" onclick="validateForm(event)">
+    </form>
+
+    <script>
+        function validateForm(event) {
+            event.preventDefault(); // prevent the form from submitting
+
+            // get the input values
+            var username = document.getElementsByName("username")[0].value;
+            var password = document.getElementsByName("password")[0].value;
+
+            // check if the username and password are correct
+            if (username === "admin" && password === "password") {
+                // redirect to the homepage or display a success message
+                window.location.href = "homepage.html";
+            } else {
+                // display error messages
+                var errorMsgUsername = document.getElementById("error-msg-username");
+                var errorMsgPassword = document.getElementById("error-msg-password");
+                if (username !== "admin") {
+                    errorMsgUsername.innerHTML = "Неверный логин!";
+                } else {
+                    errorMsgUsername.innerHTML = "";
+                }
+                if (password !== "password") {
+                    errorMsgPassword.innerHTML = "Неверный пароль!";
+                } else {
+                    errorMsgPassword.innerHTML = "";
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>

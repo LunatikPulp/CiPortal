@@ -1,0 +1,173 @@
+@import url("https:/*fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+/* Убираем все отступы */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  height: auto;
+  width: auto;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  width: 100%;
+  min-height: 100vh;
+  background: #238C86;
+
+}
+
+header {
+  display: flex;
+  padding: 0.2em 0.5em;
+  height: 9em;
+
+}
+
+.txt1 {
+  flex: 5;
+  font-size: 1.0em;
+  flex-shrink: 1;
+  color: #fff;
+  text-align: center;
+  margin-right: 100px;
+}
+
+.txt1 h1 {
+  margin-bottom: 0.6em;
+  margin-top: 20px;
+}
+
+.img1 {
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #49e0d9;
+}
+
+.card {
+  width: 350px;
+  height: 440px;
+  background-color: #fff;
+  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden
+}
+
+.card .info {
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #e1dede;
+  background-color: #e5e5e5
+}
+
+.card .info button {
+  height: 30px;
+  width: 80px;
+  border: none;
+  color: #fff;
+  border-radius: 4px;
+  background-color:indigo;
+  cursor: pointer;
+  text-transform: uppercase
+}
+
+.info span{
+  margin-left: 5px;
+  margin-top: 5px;
+  font-size: 20px;
+}
+
+.card .forms {
+  padding: 15px
+}
+
+.card .inputs {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px
+}
+
+.card .inputs span {
+  font-size: 12px
+}
+
+.card .inputs input {
+  height: 40px;
+  padding: 0px 10px;
+  font-size: 17px;
+  box-shadow: none;
+  outline: none
+}
+
+.card .inputs input[type="text"][readonly] {
+  border: 2px solid rgba(0, 0, 0, 0)
+}
+.footer{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+  padding-top: 10px;
+  padding-left: 10px;
+  background: #238C86;
+  color: white;
+}
+.point{
+  line-height: 25px;
+  text-align: justify;
+  list-style-image:url(img/knopka.png);
+}
+.point li a{
+text-decoration: none;
+color: white;
+}
+.point_1{
+list-style: none;
+line-height: 25px;
+}
+.point_2{
+margin-top: 5px;
+}
+.point_2 a{
+padding: 0 20px 0 20px;
+}
+.header-buttons {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+}
+.header-button a {
+  text-decoration: none;
+  color: black;
+}
+
+.header-button {
+  background-color: #4CAF50;
+  border: none;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  padding: 10px 16px;
+  margin-top: 154px;
+border-radius: 4px;
+}
+
